@@ -115,10 +115,7 @@ updateMessages();
 updateMessagesInChatBox();
 
 
-saveButton.addEventListener("click", function(saveButtonClickEvent){
-    saveButtonClickEvent.preventDefault();
-    localStorage.setItem('username', writtenName.value);
-    saved = "yes";
-    nameInput.value = localStorage.getItem('username');
-    return nameInput;
+darkButton.addEventListener("click", function(darkButtonClickEvent){
+    darkButtonClickEvent.preventDefault();
+    
 });
