@@ -10,12 +10,12 @@ Instructions to this assignment can be found [here](https://it3049c.github.io/co
 ## Self-Evaluation:
 
 how many points out of 20 do you deserve on this assignment: 
-I believe I deserve a 20/20 for this assignment. The website and application works as intended. 
+I believe I deserve an 18/20 for this assignment. The website and application works as intended, however there is one small issue where the application does not recognize who is sending the message, and will show that the user sent a message as if another person had sent it. However, that score excludes the extra credit with the dark mode functionality. 
 ## Self-Reflection:
 <!-- Write your self-reflection under this line -->
-I was happy with my performance in this lab. I understood what was going on and how to troubleshoot and quickly fix the problems with my code. 
+I was able to construct things relatively easily and could troubleshoot decently well, but I got stuck in a couple of places. The dark mode was implemented easily, however. 
 ### How long it took me to finish this?
-It took me about 2 Hours at maximum to complete.
+It took me about 3 Hours to complete.
 
 ## Discussion Questions:
 1. What does the bootstrap `display-4` class do?
