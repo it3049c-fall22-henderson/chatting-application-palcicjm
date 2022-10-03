@@ -7,6 +7,11 @@ const saveButton = document.getElementById("save-name");
 let saved = "not";
 const darkButton = document.getElementById("dark-mode");
 const lightButton = document.getElementById("light-mode");
+const body = document.getElementsByTagName("body")[0];
+const footer = document.getElementsByTagName("footer")[0];
+const jumbotron = document.getElementsByClassName("jumbotron")[0];
+const mesBox = document.getElementById("chatbar");
+const extraFooter = document.getElementById("extra");
 
 
 let nameInput = document.getElementById("my-name-input");
@@ -117,5 +122,20 @@ updateMessagesInChatBox();
 
 darkButton.addEventListener("click", function(darkButtonClickEvent){
     darkButtonClickEvent.preventDefault();
-    
+    extraFooter.style = "background: #414141";
+    myMessage.style = "background: #BEBEBE";
+    mesBox.style = "background: #656565";
+    body.style = "background: #2a2a2a";
+    footer.style = "background: #414141"
+    jumbotron.style = "background: #656565"
+});
+
+lightButton.addEventListener("click", function(lightButtonClickEvent){
+    lightButtonClickEvent.preventDefault();
+    extraFooter.style = "";
+    myMessage.style = "";
+    mesBox.style = "";
+    body.style = "";
+    footer.style = ""
+    jumbotron.style = ""
 });
