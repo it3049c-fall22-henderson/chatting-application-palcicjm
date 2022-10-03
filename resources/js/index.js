@@ -1,7 +1,25 @@
-const nameInput = document.getElementById("my-name-input");
+
+let writtenName = document.getElementById("my-name-input");
 const myMessage = document.getElementById("my-message");
 const sendButton = document.getElementById("send-button");
 const chatBox = document.getElementById("chat");
+const saveButton = document.getElementById("save-name");
+let saved = "not";
+const darkButton = document.getElementById("dark-mode");
+const lightButton = document.getElementById("light-mode");
+
+
+let nameInput = document.getElementById("my-name-input");
+
+saveButton.addEventListener("click", function(saveButtonClickEvent){
+    saveButtonClickEvent.preventDefault();
+    localStorage.setItem('username', writtenName.value);
+    saved = "yes";
+    nameInput.value = localStorage.getItem('username');
+    return nameInput;
+});
+
+
 
 
 async function updateMessagesInChatBox() {
@@ -21,11 +39,26 @@ function fetchMessages() {
       .then( response => response.json())
 }
 
-function formatMessage(message, myNameInput) {
+
+
+sendButton.addEventListener("click", function(sendButtonClickEvent) {
+    sendButtonClickEvent.preventDefault();
+    
+    const sender = nameInput.value;
+    const message = myMessage.value;
+    if (saved === "yes") {
+        sendMessages(sender,message);
+        myMessage.value = "";
+    } else {alert("Please save a username to send a message")}
+ });
+
+ 
+
+function formatMessage(message, nameInput) {
   const time = new Date(message.timestamp);
   const formattedTime = `${time.getHours()}:${time.getMinutes()}`;
-
-  if (myNameInput === message.sender) {
+  
+  if (nameInput.value == message.sender) {
       return `
       <div class="mine messages">
           <div class="message">
@@ -51,11 +84,6 @@ function formatMessage(message, myNameInput) {
 }
 
 
-
-// stuff goes here i think 
-
-
-
 function sendMessages(username, text) {
   const newMessage = {
       sender: username,
@@ -66,14 +94,12 @@ function sendMessages(username, text) {
   $.post(serverURL, newMessage);
 }
 
-sendButton.addEventListener("click", function(sendButtonClickEvent) {
-  sendButtonClickEvent.preventDefault();
-  const sender = nameInput.value;
-  const message = myMessage.value;
 
-  sendMessages(sender,message);
-  myMessage.value = "";
-});
+
+// make an if then else here
+  
+
+
 
 
 // final stuff?
@@ -83,5 +109,16 @@ const MILLISECONDS_IN_TEN_SECONDS = 10000;
 setInterval(updateMessages, MILLISECONDS_IN_TEN_SECONDS);
 }
 
+
+
+updateMessages();
 updateMessagesInChatBox();
 
+
+saveButton.addEventListener("click", function(saveButtonClickEvent){
+    saveButtonClickEvent.preventDefault();
+    localStorage.setItem('username', writtenName.value);
+    saved = "yes";
+    nameInput.value = localStorage.getItem('username');
+    return nameInput;
+});
